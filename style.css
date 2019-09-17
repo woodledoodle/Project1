@@ -1,0 +1,24 @@
+#square1{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}
+#square2{
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+}
+#square3{
+    height: 100px;
+    width: 100px;
+    background-color:green;
+}
+#square4{
+    height: 100px;
+    width: 100px;
+    background-color:yellow;
+}
+
+.square11{
+    background-color: lightcoral;
+}
