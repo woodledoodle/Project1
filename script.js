@@ -6,21 +6,35 @@ let turn;
 let compTurn;
 let win;
 const startButton = document.querySelector('#start')
+let rounds =5;
+let response;
 
 startButton.addEventListener('click', function(event){
     if (start) {
         play();
     }
-    computerPlay(10);
+    play();
 
 });
 function play(){
     win=false;
+    let gameRound =1;
+    gameOver = false;
     sequence = [];
     playerSequence = [];
-    for (let i=0; i < 10; i++) {
-        sequence.push(Math.floor(Math.random() * 4) + 1);
-    }
+    while (!gameOver){
+        computerPlay(gameRound)
+       
+        if (response === 'no'){
+            gameOver = true;
+        }
+        if (gameRound >= rounds){
+            gameOver = true;
+        }
+        gameRound ++;
+        console.log(gameRound)
+        response= prompt('do you want to continue? yes/no')
+    } 
 }
 
 var randomSquare = document.querySelectorAll('.square')
