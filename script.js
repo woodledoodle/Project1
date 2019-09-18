@@ -1,11 +1,22 @@
+//keeps track of computer light sequence
+// let sequence = [];
+//keep track of player sequence
+let playerSequence = [];
+let turn;
+let compTurn;
+let win;
+// const startButton = document.querySelector('#start')
+
+// startButton.addEventListener('click', function(event){
+//     if (on) {
+//         playerSequence();
+//     }
+// });
 
 
 document.querySelector('#square1').addEventListener('click', function() {
   document.getElementsByClassName('square11')[0].style.backgroundColor = 'lightcoral'
-   
-
-   
-    
+ 
 });
 
 document.querySelector('#square2').addEventListener('click', function() {
