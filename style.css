@@ -23,4 +23,25 @@
 img{
     max-width: 40%;
     max-height: 40%;
+    position: relative;
+    left: 30%;
+    z-index: -1;
+}
+
+ #squares{
+     display: inline-flex;
+     position: relative;
+     z-index: 2;
+ }   
+ #square-2{
+    margin-top: 36%;
+   display: inline-flex;
+ }
+
+#square-3{
+    margin-top: 36%;
+    margin-right: 30%;
+}
+.square{
+    margin-top: 29%;
 }

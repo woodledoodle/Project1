@@ -1,98 +1,133 @@
+
 //keeps track of computer light sequence
 let sequence = [];
 //keep track of player sequence
 let playerSequence = [];
-let turn;
-let compTurn;
-let win;
-const startButton =document.getElementById('start')
-let rounds =5;
-let response;
 
+// declare and assign start button and p tag to display who is playing
+const startButton = document.querySelector('#start')
+const isPlaying = document.getElementById("playing");
+
+// declare randomSquares for computer play and squares for player play
+var randomSquare = document.querySelectorAll('.square');
+var squares = document.getElementById("squares");
+
+// declare variables for whos turn it is, the number of rounds, and the current round
+let turn = 'computer';
+let rounds = 10;
+let gameRound = 1;
 
 startButton.addEventListener('click', function(event){
-    if (start) {
-        play();
+    // this starts the game
+    if(gameRound == 1){
+        play(gameRound);
+        gameRound++; 
+    } else {
+        alert("Game has already started")
     }
-    play();
-
 });
-function play(){
-    win=false;
-    let gameRound =1;
-    gameOver = false;
+
+function play(gameRound){
     sequence = [];
     playerSequence = [];
-    while (!gameOver){
-        computerPlay(gameRound)
-       
-        if (response === 'no'){
-            gameOver = true;
-        }
-        if (gameRound >= rounds){
-            gameOver = true;
-        }
-        gameRound ++;
-        console.log(gameRound)
-        
-    } 
+    computerPlay(gameRound);
 }
 
-function computerTurn
-
-
-var randomSquare = document.querySelectorAll('.square')
-function computerLightSquare(){
-    let index = Math.floor(Math.random() * 4)
-    randomSquare[index].style.opacity = .2;
-    setTimeout(function(){
-        randomSquare[index].style.opacity = 1;    
-    },500)
-
+function clearGame(){
+    gameRound = 1; 
 }
-function computerPlay(){
+
+
+// this is for player play
+squares.addEventListener('click', function(event) {
+    let square = event.target;
+    // this pushes the players selection onto array
+    if(square.id !== 'squares' && turn === 'player' && playerSequence.length < sequence.length) {
+        playerSequence.push( Number(square.id.split('-')[1]));   
+    }
+    // this checks the computers choices against players choices after finished selecting
+    if(turn === 'player' &&  playerSequence.length === sequence.length && square.id !== 'squares') {
+        if(JSON.stringify(playerSequence) !== JSON.stringify(sequence)){
+            alert("YOU LOST");
+            clearGame(); // might not need this if the browser if reloaded
+            window.location.reload(); // reload the browser
+        } else {
+            // first check if it is last round ..
+            if((gameRound - 1) == rounds){
+                alert("YOU WON THE WHOLE GAME!");
+            } else { // if not, then continue playing with computer turn
+                alert("Nice Job... Next Round!");
+                setTimeout(function(){
+                    turn = 'computer';
+                    play(gameRound);
+                    gameRound++;
+                }, 1000)
+            }
+        }
+    }
+})
+// when the mouse presses down and up, the selected square will light up accordingly
+squares.addEventListener('mousedown', function(event){
+    let square = event.target;
+    if(square.id !== 'squares' && turn === 'player') {
+        square.style.opacity = .2;
+        window.addEventListener('mouseup', function() {
+            square.style.opacity = 1;
+        })
+    }
+    
+}) // end code player play
+
+
+// this is for the computer play
+function computerPlay(numPlay){
     
     if (numPlay > 0){
-        computerLightSquare();
+        isPlaying.innerText = "Computer Playing";
+        computerLightSquare(numPlay);
         setTimeout(function(){
-            computerPlay(numPlay -1)  
-        },1000)
+            computerPlay(numPlay -1)
+        },1500)
     }
-        
 }
 
+function computerLightSquare(numPlay){
+    let index = Math.floor(Math.random() * 4)
+    sequence.push(index);
+    randomSquare[index].style.opacity = .2;
+    setTimeout(function(){
+        randomSquare[index].style.opacity = 1;  
+        if(numPlay === 1) {
+            isPlaying.innerText = "Your turn";
+            turn = 'player';
+            console.log("seq: ", sequence)
+        }  
+    },500)
+} // end code for computer play
 
 
-document.querySelector('#square1').addEventListener('click', function() {
-  document.getElementsByClassName('square11')[0].style.backgroundColor = 'lightcoral'
- 
-});
+// this is for the computer play
+function computerPlay(numPlay){
+    
+    if (numPlay > 0){
+        isPlaying.innerText = "Computer Playing";
+        computerLightSquare(numPlay);
+        setTimeout(function(){
+            computerPlay(numPlay -1)
+        },1500)
+    }
+}
 
-document.querySelector('#square2').addEventListener('click', function() {
-    document.getElementsByClassName('square22')[0].style.backgroundColor = 'lightblue'
-});
-
-document.querySelector('#square3').addEventListener('click', function() {
-    document.getElementsByClassName('square33')[0].style.backgroundColor = 'lightgreen'
-});
-
-document.querySelector('#square4').addEventListener('click', function() {
-    document.getElementsByClassName('square44')[0].style.backgroundColor = 'yellow'
-});
-//testtest
-
-// function sequence(){
-//     document.getElementsByClassName('square11')[0].style.backgroundColor = 'lightcoral'
-//     setTimeout(function(){
-//         document.getElementsByClassName('square11')[0].style.backgroundColor = 'red'
-//     },2000)
-
-//     document.getElementsByClassName('square22')[0].style.backgroundColor = 'lightblue'
-//     setTimeout(function(){
-//         document.getElementsByClassName('square22')[0].style.backgroundColor = 'blue'
-//     },2000)
-
-//     document.getElementsByClassName('square33')[0].style.backgroundColor = 'lightgreen'
-
-//     document.getElementsByClassName('square44')[0].style.backgroundColor = 'yellow'
-// }
+function computerLightSquare(numPlay){
+    let index = Math.floor(Math.random() * 4)
+    sequence.push(index);
+    randomSquare[index].style.opacity = .2;
+    setTimeout(function(){
+        randomSquare[index].style.opacity = 1;  
+        if(numPlay === 1) {
+            isPlaying.innerText = "Your turn";
+            turn = 'player';
+            console.log("seq: ", sequence)
+        }  
+    },500)
+}  // end code for computer play
