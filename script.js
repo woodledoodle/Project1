@@ -1,12 +1,17 @@
 
 //keeps track of computer light sequence
 let sequence = [];
+
 //keep track of player sequence
 let playerSequence = [];
 
+//show the level you are on
+const turnLevel = document.querySelector('#level');
+
 // declare and assign start button and p tag to display who is playing
 const startButton = document.querySelector('#start')
-const isPlaying = document.getElementById("playing");
+
+const isPlaying = document.getElementById('playing');
 
 // declare randomSquares for computer play and squares for player play
 var randomSquare = document.querySelectorAll('.square');
@@ -31,10 +36,12 @@ function play(gameRound){
     sequence = [];
     playerSequence = [];
     computerPlay(gameRound);
+    turnLevel.innerHTML = 1;
 }
 
 function clearGame(){
     gameRound = 1; 
+    
 }
 
 
