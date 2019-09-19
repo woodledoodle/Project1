@@ -5,9 +5,10 @@ let playerSequence = [];
 let turn;
 let compTurn;
 let win;
-const startButton = document.querySelector('#start')
+const startButton =document.getElementById('start')
 let rounds =5;
 let response;
+
 
 startButton.addEventListener('click', function(event){
     if (start) {
@@ -33,9 +34,12 @@ function play(){
         }
         gameRound ++;
         console.log(gameRound)
-        response= prompt('do you want to continue? yes/no')
+        
     } 
 }
+
+function computerTurn
+
 
 var randomSquare = document.querySelectorAll('.square')
 function computerLightSquare(){
@@ -46,7 +50,7 @@ function computerLightSquare(){
     },500)
 
 }
-function computerPlay(numPlay){
+function computerPlay(){
     
     if (numPlay > 0){
         computerLightSquare();

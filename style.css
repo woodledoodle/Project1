@@ -1,22 +1,26 @@
-#square1{
+#square-0{
     height: 100px;
     width: 100px;
     background-color: red;
 }
-#square2{
+#square-1{
     height: 100px;
     width: 100px;
     background-color: blue;
 }
-#square3{
+#square-2{
     height: 100px;
     width: 100px;
     background-color:green;
 }
-#square4{
+#square-3{
     height: 100px;
     width: 100px;
     background-color:orange;
 }
 
 
+img{
+    max-width: 40%;
+    max-height: 40%;
+}
