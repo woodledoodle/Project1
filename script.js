@@ -19,7 +19,7 @@ var squares = document.getElementById("squares");
 
 // declare variables for whos turn it is, the number of rounds, and the current round
 let turn = 'computer';
-let rounds = 10;
+let rounds = 8;
 let gameRound = 1;
 
 startButton.addEventListener('click', function(event){
@@ -28,7 +28,7 @@ startButton.addEventListener('click', function(event){
         play(gameRound);
         gameRound++; 
     } else {
-        alert("Game has already started")
+        alert("Hurry before you get caught!")
     }
 });
 
@@ -36,7 +36,7 @@ function play(gameRound){
     sequence = [];
     playerSequence = [];
     computerPlay(gameRound);
-    turnLevel.innerHTML = 1;
+    turnLevel.innerHTML = gameRound;
 }
 
 function clearGame(){
@@ -55,7 +55,7 @@ squares.addEventListener('click', function(event) {
     // this checks the computers choices against players choices after finished selecting
     if(turn === 'player' &&  playerSequence.length === sequence.length && square.id !== 'squares') {
         if(JSON.stringify(playerSequence) !== JSON.stringify(sequence)){
-            alert("YOU LOST");
+            alert("Uh Oh, Wrong Code. You have been caught!");
             clearGame(); // might not need this if the browser if reloaded
             window.location.reload(); // reload the browser
         } else {
@@ -94,7 +94,7 @@ function computerPlay(numPlay){
         computerLightSquare(numPlay);
         setTimeout(function(){
             computerPlay(numPlay -1)
-        },1500)
+        },1000)
     }
 }
 
@@ -121,7 +121,7 @@ function computerPlay(numPlay){
         computerLightSquare(numPlay);
         setTimeout(function(){
             computerPlay(numPlay -1)
-        },1500)
+        },1000)
     }
 }
 
