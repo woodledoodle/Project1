@@ -1,47 +1,51 @@
 #squares{
     background-image: url("https://i.imgur.com/3kXRgKD.png");
-    width: 60%;
+    width: 500px;
+    height: 500px;
     margin: auto;
     text-align: center;
-    /* flex-wrap: wrap; */
     position: relative;
     background-position: center;
-    background-size: 60%;
+    background-size: 500px;
     background-repeat: no-repeat;
    
 }   
+#boardContainer{
+    position: absolute;
+    left: 130px;
+    top: 260px;
 
+}
 #square-0{
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     background-color: red;
     position: absolute;
+    top: 90px;
     
 }
 #square-1{
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     background-color: blue;
     position:absolute;
-    left: 100px;
-    
+    left: 90px;
+    top: 90px;
+
 }
 #square-2{
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     background-color:green;
     position:absolute;
+    left: 90px;
     
 }
 #square-3{
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     background-color:orange;
     position:absolute;
-}
-.squares{
-    top: 0;
-    left: 0;
 }
 
 img{
@@ -73,13 +77,17 @@ img{
     width: 100px;
     text-align: center;
   }
-  #background{
-      opacity: .8;
-  }
+  
   #image{
       background-image: url('https://i.imgur.com/MAmATPu.png');
       height: 100vh;
+      opacity: .8;
   }
   p{
       color:white;
   }
+  body{
+      font-size: 100%;
+  }
+
+  /* 1125/753 */
