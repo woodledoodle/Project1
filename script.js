@@ -113,28 +113,5 @@ function computerLightSquare(numPlay){
 } // end code for computer play
 
 
-// this is for the computer play
-function computerPlay(numPlay){
-    
-    if (numPlay > 0){
-        isPlaying.innerText = "Computer Playing";
-        computerLightSquare(numPlay);
-        setTimeout(function(){
-            computerPlay(numPlay -1)
-        },1000)
-    }
-}
 
-function computerLightSquare(numPlay){
-    let index = Math.floor(Math.random() * 4)
-    sequence.push(index);
-    randomSquare[index].style.opacity = .2;
-    setTimeout(function(){
-        randomSquare[index].style.opacity = 1;  
-        if(numPlay === 1) {
-            isPlaying.innerText = "Your turn";
-            turn = 'player';
-            console.log("seq: ", sequence)
-        }  
-    },500)
-}  // end code for computer play
+
